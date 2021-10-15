@@ -16,6 +16,8 @@ The player who reaches 100 or more first is the winner 🏆.
 HTML | CSS | JAVASCRIPT
 ```
 
+#javascript #squidGame #netflix #coding #js 
+
 ## Create by
 
 [Fernando Portugal](https://fernandoportugal.com)
