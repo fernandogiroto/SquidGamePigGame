@@ -68,20 +68,17 @@ const changePLayer = function(){
 btnNew.addEventListener('click',init);
 
 btnHold.addEventListener('click', function(){
-    if(playing){
-        if(canRoll){
-            scores[activePlayer] += currentScore;
-            document.getElementById(`score--${activePlayer}`).textContent = scores[activePlayer];
-            if(scores[activePlayer]>100){
-                document.querySelector(`.player--${activePlayer}`).classList.add('player--winner');
-                document.querySelector(`.player--${activePlayer}`).classList.remove('player--active');
-                playing = false;
-                diceEl.classList.add('hidden');
-            }else{
-                changePLayer();
-            }
-        }
-
+    if(playing && canRoll){
+        scores[activePlayer] += currentScore;
+        document.getElementById(`score--${activePlayer}`).textContent = scores[activePlayer];
+        if(scores[activePlayer]>100){
+            document.querySelector(`.player--${activePlayer}`).classList.add('player--winner');
+            document.querySelector(`.player--${activePlayer}`).classList.remove('player--active');
+            playing = false;
+            diceEl.classList.add('hidden');
+        }else{
+            changePLayer();
+        }   
     }
 });
 
