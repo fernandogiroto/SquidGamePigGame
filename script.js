@@ -1,4 +1,8 @@
 'use strict';
+//Dice Soud
+const diceSound = new Audio('roll.wav');
+const gunSound = new Audio('gun.wav')
+
 const player0El = document.querySelector('.player--0');
 const player1El = document.querySelector('.player--1');
 const score0El = document.querySelector('#score--0');
@@ -26,6 +30,7 @@ const init = function(){
     activePlayer = 0;
     currentScore = 0;
     playing = true;
+    canRoll = false;
 
     score0El.textContent = 0;
     score1El.textContent = 0;
@@ -37,12 +42,28 @@ const init = function(){
     player1El.classList.remove('player--winner');
     player0El.classList.add('player--active');
     player1El.classList.remove('player--active');
+
+    document.getElementById('player0').src = "player1.jpeg"; 
+    document.getElementById('player1').src = "player2.jpeg"; 
 }
 init();
+
+const killLoserPlayer = function(winnerPlayer){
+    setTimeout(function(){ 
+        if (winnerPlayer === 0){
+            document.querySelector('#player1').src = "player1_dead.png";
+        }else{
+            document.querySelector('#player0').src = "player0_dead.png";
+        }
+        gunSound.play();
+        btnNew.disabled = false;
+    }, 1500);
+}
 
 btnRoll.addEventListener('click', function(){
     if(playing){
         canRoll = true;
+        diceSound.play();
         const dice = Math.trunc((Math.random() * 6) + 1);
         diceEl.classList.remove('hidden');
         diceEl.src = `dice-${dice}.png`;
@@ -72,16 +93,17 @@ btnHold.addEventListener('click', function(){
         scores[activePlayer] += currentScore;
         document.getElementById(`score--${activePlayer}`).textContent = scores[activePlayer];
         if(scores[activePlayer]>100){
+            btnNew.disabled = true;
             document.querySelector(`.player--${activePlayer}`).classList.add('player--winner');
             document.querySelector(`.player--${activePlayer}`).classList.remove('player--active');
             playing = false;
             diceEl.classList.add('hidden');
+            killLoserPlayer(activePlayer);
         }else{
             changePLayer();
         }   
     }
 });
-
 
 // MODAL 
 const modal = document.querySelector('.modal'); 
