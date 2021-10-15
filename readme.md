@@ -2,6 +2,8 @@
 
 Always thinking about how to practice a programming language and have fun at the same time, I prepared this small project, based on the new viral series called Squid Game. But don't worry that no one will die in this little javascript game. The real name of the game is called Pig Game, where two players will have to roll the dice, until the sum of the drawn numbers reaches 100.
 
+![alt text](https://github.com/fernandogiroto/SquidGame_PigGame/blob/master/github_game_squid_game.jpeg?raw=true)
+
 ## Game Rules
 
 Players in their turns can roll the number of times they want the die, and every time they roll, the numbers drawn are added up. However, if the number drawn is 1 (one), the values ​​are immediately reset to zero and the player loses his turn.
@@ -17,3 +19,4 @@ HTML | CSS | JAVASCRIPT
 ## Create by
 
 [Fernando Portugal](https://fernandoportugal.com)
+
